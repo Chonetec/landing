@@ -1,0 +1,183 @@
+.section {
+  padding: 100px 1.5rem;
+  background: var(--bg);
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--green-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.body {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.value {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.valueIcon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.valueLabel {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.valueDesc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Visual */
+.visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: linear-gradient(145deg, var(--green-primary), #1b4d36);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: var(--shadow-lg);
+}
+
+.mapPin {
+  font-size: 2.5rem;
+}
+
+.location {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.tagline {
+  font-size: 0.88rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.pillRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.floatBadge {
+  position: absolute;
+  bottom: -18px;
+  right: 10%;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.2rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 1.5px solid var(--green-pale);
+}
+
+.floatNum {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--green-primary);
+}
+
+.floatText {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .visual {
+    order: -1;
+  }
+
+  .card {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 72px 1.5rem;
+  }
+}
