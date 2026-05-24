@@ -23,8 +23,8 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <nav className={styles.nav}>
         <a href="#inicio" className={styles.logo}>
-          <span className={styles.logoMark}>C</span>
-          <span className={styles.logoText}>Chonetec</span>
+          <img src="/logoWithoutBackground.png" alt="ChoneTec" className={styles.logoImg} />
+          <span className={styles.logoText}>Chone<span className={styles.logoTec}>Tec</span></span>
         </a>
 
         <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>

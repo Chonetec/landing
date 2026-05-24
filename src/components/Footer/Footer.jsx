@@ -29,10 +29,9 @@ export default function Footer() {
       >
         <div className={styles.top}>
           <div className={styles.brand}>
-            <div className={styles.logo}>
-              <span className={styles.logoMark}>C</span>
-              <span className={styles.logoText}>Chonetec</span>
-            </div>
+            <a href="#inicio" className={styles.logoWrap}>
+              <img src="/logoWithoutBackground.png" alt="ChoneTec" className={styles.logoImg} />
+            </a>
             <p className={styles.tagline}>
               Soluciones tecnológicas a la medida de tu negocio.
             </p>
