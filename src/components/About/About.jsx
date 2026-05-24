@@ -82,10 +82,6 @@ export default function About() {
             </div>
           </div>
 
-          <div className={styles.floatBadge}>
-            <span className={styles.floatNum}>2024</span>
-            <span className={styles.floatText}>Fundados</span>
-          </div>
         </div>
       </div>
     </section>

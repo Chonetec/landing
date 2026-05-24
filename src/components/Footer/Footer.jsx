@@ -1,9 +1,25 @@
+import { useEffect, useState } from 'react'
 import { useInView } from '../../hooks/useInView'
 import styles from './Footer.module.css'
+
+const WORDS = ['amor', 'pasión', 'compromiso', 'dedicación', 'propósito']
 
 export default function Footer() {
   const year = new Date().getFullYear()
   const [ref, inView, dir] = useInView({ threshold: 0.05 })
+  const [wordIndex, setWordIndex] = useState(0)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setWordIndex(i => (i + 1) % WORDS.length)
+        setFading(false)
+      }, 300)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <footer className={styles.footer}>
@@ -39,9 +55,18 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <span className={styles.copy}>
-            © {year} Chonetec. Hecho con 🌿 en Costa Rica.
+          <span className={styles.copy}>© {year} Chonetec</span>
+
+          <span className={styles.centerCopy}>
+            Hecho con{' '}
+            <span className={styles.wordSlot}>
+              <span className={`${styles.word} ${fading ? styles.wordOut : styles.wordIn}`}>
+                {WORDS[wordIndex]}
+              </span>
+            </span>
+            {' '}en Costa Rica.
           </span>
+
           <div className={styles.legal}>
             <a href="#" className={styles.legalLink}>Privacidad</a>
             <a href="#" className={styles.legalLink}>Términos</a>

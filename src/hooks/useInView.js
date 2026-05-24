@@ -1,18 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 export function useInView(options = {}) {
-  const ref = useRef(null)
   const [state, setState] = useState({ inView: false, dir: 'bottom' })
+  const observerRef = useRef(null)
 
-  useEffect(() => {
-    const el = ref.current
+  // Callback ref: fires every time the element mounts or unmounts,
+  // so conditional renders (like the contact success state) re-observe correctly.
+  const ref = useCallback((el) => {
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
+    }
     if (!el) return
 
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // top >= 0: element entering from below (user scrolling down)
-          // top <  0: element entering from above (user scrolling up)
           const dir = entry.boundingClientRect.top >= 0 ? 'bottom' : 'top'
           setState({ inView: true, dir })
         } else {
@@ -22,8 +25,7 @@ export function useInView(options = {}) {
       { threshold: 0.12, ...options }
     )
 
-    observer.observe(el)
-    return () => observer.disconnect()
+    observerRef.current.observe(el)
   }, [])
 
   return [ref, state.inView, state.dir]
