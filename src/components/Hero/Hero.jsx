@@ -4,6 +4,7 @@ export default function Hero() {
   return (
     <section id="inicio" className={styles.hero}>
       <div className={styles.bg}>
+        <img src="/BahiaBallena2.jpg" alt="" className={styles.bgImg} aria-hidden="true" />
         <div className={styles.blob1} />
         <div className={styles.blob2} />
         <div className={styles.dots} />

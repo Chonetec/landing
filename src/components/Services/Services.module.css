@@ -1,6 +1,19 @@
 .section {
   padding: 100px 1.5rem;
   background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.tucan {
+  position: absolute;
+  bottom: -20px;
+  right: -30px;
+  width: 220px;
+  opacity: 0.12;
+  pointer-events: none;
+  transform: scaleX(-1);
+  filter: saturate(0.4);
 }
 
 .container {

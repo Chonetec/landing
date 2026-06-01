@@ -69,16 +69,10 @@ export default function About() {
           className={`reveal-right ${visualDir === 'top' ? 'from-top' : ''} ${visualVisible ? 'visible' : ''} ${styles.visual}`}
           style={{ '--delay': 80 }}
         >
-          <div className={styles.card}>
-            <div className={styles.mapPin}>📍</div>
-            <div className={styles.location}>Costa Rica</div>
-            <div className={styles.tagline}>
-              Construyendo soluciones tecnológicas desde Centroamérica para cualquier parte del mundo
-            </div>
-            <div className={styles.pillRow}>
-              <span className={styles.pill}>Software</span>
-              <span className={styles.pill}>Automatización</span>
-              <span className={styles.pill}>Datos</span>
+          <div className={styles.photoWrap}>
+            <img src="/MapaDeCostaRica.png" alt="Mapa de Costa Rica" className={styles.photo} />
+            <div className={styles.photoOverlay}>
+              <span className={styles.photoLabel}>Costa Rica</span>
             </div>
           </div>
 

@@ -35,7 +35,7 @@ export default function Services() {
 
   return (
     <section id="servicios" className={styles.section}>
-      <div className={styles.container}>
+<div className={styles.container}>
         <div
           ref={headerRef}
           className={`reveal ${headerDir === 'top' ? 'from-top' : ''} ${headerVisible ? 'visible' : ''} ${styles.header}`}
