@@ -3,6 +3,7 @@ import styles from './Navbar.module.css'
 
 const NAV_LINKS = [
   { label: 'Servicios', href: '#servicios' },
+  { label: 'Proceso', href: '#proceso' },
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Contacto', href: '#contacto' },
 ]
@@ -13,34 +14,33 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleLinkClick = () => setMenuOpen(false)
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <nav className={styles.nav}>
-        <a href="#inicio" className={styles.logo}>
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+      <div className={`wrap ${styles.inner}`}>
+        <a className={styles.brand} href="#top" onClick={closeMenu}>
           <img src="/logoWithoutBackground.png" alt="ChoneTec" className={styles.logoImg} />
-          <span className={styles.logoText}>Chone<span className={styles.logoTec}>Tec</span></span>
+          <span className={styles.brandText}>Chone<b>Tec</b></span>
         </a>
 
-        <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
+        <div className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
           {NAV_LINKS.map(({ label, href }) => (
-            <li key={href}>
-              <a href={href} className={styles.link} onClick={handleLinkClick}>
-                {label}
-              </a>
-            </li>
+            <a key={href} href={href} onClick={closeMenu}>{label}</a>
           ))}
-          <li>
-            <a href="#contacto" className={styles.ctaLink} onClick={handleLinkClick}>
-              Empezá ahora
-            </a>
-          </li>
-        </ul>
+          <div className={styles.mobileCta}>
+            <a className="btn btn-primary" href="#contacto" onClick={closeMenu}>Hablemos</a>
+          </div>
+        </div>
+
+        <div className={styles.cta}>
+          <a className="btn btn-primary" href="#contacto">Hablemos</a>
+        </div>
 
         <button
           className={`${styles.burger} ${menuOpen ? styles.active : ''}`}
@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           <span /><span /><span />
         </button>
-      </nav>
-    </header>
+      </div>
+    </nav>
   )
 }

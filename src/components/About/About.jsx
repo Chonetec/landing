@@ -1,83 +1,71 @@
 import { useInView } from '../../hooks/useInView'
 import styles from './About.module.css'
 
-const VALUES = [
-  {
-    icon: '🎯',
-    label: 'Enfocados en el problema real',
-    desc: 'Antes de escribir código, entendemos a fondo qué necesitás y por qué.',
-  },
-  {
-    icon: '🌿',
-    label: 'Raíces locales',
-    desc: 'Somos costarricenses y entendemos el contexto, los tiempos y la forma de trabajar aquí.',
-  },
-  {
-    icon: '🤝',
-    label: 'Relación directa',
-    desc: 'Trabajás de frente con el equipo que construye tu producto, sin intermediarios.',
-  },
+const STATS = [
+  { bn: '100%', bl: 'Equipo costarricense' },
+  { bn: '0', bl: 'Plantillas genéricas' },
+  { bn: '<24 h', bl: 'Primera respuesta' },
+  { bn: '∞', bl: 'Sectores posibles' },
+]
+
+const STEPS = [
+  { n: '01', title: 'Descubrimiento', desc: 'Analizamos tu negocio, tus objetivos y los puntos críticos que necesitas resolver.' },
+  { n: '02', title: 'Diseño', desc: 'Prototipamos la solución y la validamos contigo antes de escribir código.' },
+  { n: '03', title: 'Desarrollo', desc: 'Construimos en ciclos cortos, con entregas que puedes ver y probar.' },
+  { n: '04', title: 'Despliegue', desc: 'Lanzamos, monitoreamos y te acompañamos durante el go-live y el hypercare posterior.' },
 ]
 
 export default function About() {
-  const [contentRef, contentVisible, contentDir] = useInView()
-  const [visualRef, visualVisible, visualDir] = useInView()
+  const [bandRef, bandVisible, bandDir] = useInView({ threshold: 0.2 })
+  const [headRef, headVisible, headDir] = useInView()
+  const [stepsRef, stepsVisible, stepsDir] = useInView({ threshold: 0.08 })
 
   return (
-    <section id="nosotros" className={styles.section}>
-      <div className={styles.container}>
-        <div
-          ref={contentRef}
-          className={`reveal-left ${contentDir === 'top' ? 'from-top' : ''} ${contentVisible ? 'visible' : ''} ${styles.content}`}
-        >
-          <span className={styles.label}>Sobre nosotros</span>
-          <h2 className={styles.title}>
-            Una empresa joven con
-            <br />
-            visión clara
-          </h2>
-          <p className={styles.body}>
-            Chonetec nació con una idea simple: que cualquier negocio, sin importar
-            su tamaño o sector, merezca tener tecnología de calidad que realmente
-            funcione para él.
-          </p>
-          <p className={styles.body}>
-            No nos especializamos en una industria. Nos especializamos en entender
-            problemas y construir soluciones. Si hay un proceso que te está quitando
-            tiempo o dinero, podemos convertirlo en software.
-          </p>
-
-          <div className={styles.values}>
-            {VALUES.map((v, i) => (
-              <div
-                key={v.label}
-                className={`reveal ${contentDir === 'top' ? 'from-top' : ''} ${contentVisible ? 'visible' : ''} ${styles.value}`}
-                style={{ '--delay': 150 + i * 100 }}
-              >
-                <span className={styles.valueIcon}>{v.icon}</span>
-                <div>
-                  <div className={styles.valueLabel}>{v.label}</div>
-                  <div className={styles.valueDesc}>{v.desc}</div>
-                </div>
+    <>
+      {/* STATS BAND */}
+      <section className={styles.band} id="nosotros">
+        <div className="wrap">
+          <div
+            ref={bandRef}
+            className={`reveal ${bandDir === 'top' ? 'from-top' : ''} ${bandVisible ? 'visible' : ''} ${styles.bandGrid}`}
+          >
+            {STATS.map(s => (
+              <div key={s.bl} className={styles.bandCell}>
+                <div className={styles.bn}>{s.bn}</div>
+                <div className={styles.bl}>{s.bl}</div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        <div
-          ref={visualRef}
-          className={`reveal-right ${visualDir === 'top' ? 'from-top' : ''} ${visualVisible ? 'visible' : ''} ${styles.visual}`}
-          style={{ '--delay': 80 }}
-        >
-          <div className={styles.photoWrap}>
-            <img src="/MapaDeCostaRica.png" alt="Mapa de Costa Rica" className={styles.photo} />
-            <div className={styles.photoOverlay}>
-              <span className={styles.photoLabel}>Costa Rica</span>
-            </div>
+      {/* PROCESS */}
+      <section className={styles.process} id="proceso">
+        <div className="wrap">
+          <div
+            ref={headRef}
+            className={`sec-head center reveal ${headDir === 'top' ? 'from-top' : ''} ${headVisible ? 'visible' : ''}`}
+          >
+            <span className="eyebrow">Cómo trabajamos</span>
+            <h2>De la idea a producción, con un proceso claro.</h2>
+            <p>Un método estructurado y cercano. Te mantenemos al tanto en cada etapa, sin tecnicismos innecesarios.</p>
           </div>
 
+          <div ref={stepsRef} className={styles.steps}>
+            {STEPS.map((s, i) => (
+              <div
+                key={s.n}
+                className={`reveal ${stepsDir === 'top' ? 'from-top' : ''} ${stepsVisible ? 'visible' : ''} ${styles.step}`}
+                style={{ '--delay': i * 90 }}
+              >
+                <span className={styles.stn}>{s.n}</span>
+                <h4>{s.title}</h4>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
