@@ -16,21 +16,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 84px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
   font-family: var(--display);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 21px;
   letter-spacing: -.01em;
 }
 .logoImg {
-  width: 40px;
-  height: 40px;
+  height: 64px;
+  width: auto;
   object-fit: contain;
   flex-shrink: 0;
   transition: transform .2s;
@@ -98,7 +98,7 @@
   .burger { display: flex; }
   .links {
     position: absolute;
-    top: 72px;
+    top: 84px;
     left: 0;
     right: 0;
     flex-direction: column;
