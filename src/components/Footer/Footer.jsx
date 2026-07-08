@@ -55,7 +55,6 @@ export default function Footer() {
             </div>
             <div className={styles.col}>
               <h5>Contacto</h5>
-              <a href="mailto:hola@chonetec.com">hola@chonetec.com</a>
               <a href="#contacto">Escríbenos</a>
               <a href="#top">Costa Rica</a>
             </div>

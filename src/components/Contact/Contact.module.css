@@ -53,6 +53,26 @@
   padding: 12px 14px;
 }
 
+.errorNote {
+  margin-top: 16px;
+  font-size: 13.5px;
+  color: #a03e2c;
+  background: rgba(160, 62, 44, .07);
+  border: 1px solid rgba(160, 62, 44, .25);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+/* Campo honeypot anti-spam: fuera de la vista pero presente en el DOM */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* info column */
 .info {
   background: var(--void-2);
